@@ -47,7 +47,8 @@ I want to build a community for people who have similar thoughts through this pr
     * From the sentiment and attitude of the same topic, it is easy to find people who holds similar thoughts. This information could be utilized to build a community for people who have similar thoughts to communicate and know each other. The topic could be an album, a masterpiece, some photos. Therefore, they could make more friends on this social media to talk about the things they are all concerned about.
 
 * Module design
-    * The whole analyzer could be separated into gathering part, analyzing part, and building part.
-    * The gathering part is used to obtain the tweets and any information related to some topic on the Twitter.
-    * The analyzing part is used to analyze the sentiment and other attitude towards the topic or incident. Then, sort people who hold different idea into different groups.
+    * The whole analyzer could be separated into gathering part, sentiment part, classification part and building part.
+    * The gathering part is to obtain the tweets and any information related to some topic on the Twitter.
+    * The sentiment part is to analyze the sentiment and other attitude towards the topic or incident. 
+    * The classification part is to sort people who hold different ideas into different groups and arrange the people who hold the similar one into consistent group.
     * Building part plays an organizer role in this analyzer.  The group formed in the last part is the prototype of community. Then, build the community from the prototype and incorporate the group who hold similar idea into a larger community.
