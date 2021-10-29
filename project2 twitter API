@@ -1,25 +1,39 @@
 import tweepy
+from tweepy import *
 import pandas as pd
 import csv
 import re
 import string
 import preprocessor as p
 
-access_token =""
-access_token_secret=""
+# input a keyword and search recent 10000 tweets related to the keyword
+# output a csv document containing the time, name, content and location
+
+access_key =""
+access_secret=""
 consumer_key=""
 consumer_secret=""
 
-auth=tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_key, access_secret)
 
 api = tweepy.API(auth,wait_on_rate_limit=True)
 
-csvFile = open('file-name', 'a')
-csvWriter = csv.writer(csvFile)
-
-search_words = "covid19"      
+search_words = input("please input a valid names: ")    #enter your words
 new_search = search_words + " -filter:retweets"
 
-for tweet in tweepy.Cursor(api.search,q=new_search,count=100,lang="en",since_id=0).items():
+csvFile = open('test.csv', 'a')
+csvWriter = csv.writer(csvFile)
+
+for tweet in tweepy.Cursor(api.search_tweets,q=new_search,count=100,
+                           lang="en",
+                           since_id=0).items():
     csvWriter.writerow([tweet.created_at, tweet.text.encode('utf-8'),tweet.user.screen_name.encode('utf-8'), tweet.user.location.encode('utf-8')])
+
+test = open("./test.csv", 'a')
+with open(search_words + '.csv') as f:
+    lines = f.readlines()
+    for i in range(lines.__len__()):
+        if i % 2 ==1:
+            test.write(lines[i])
+test.close()
