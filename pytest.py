@@ -1,6 +1,6 @@
 import pytest
 import json
-import twitterAPI
+import Project2_twitterAPI
 
 def get_tweets():
   tweets = get_tweets()
